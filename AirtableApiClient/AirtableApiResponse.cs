@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace AirtableApiClient
@@ -37,6 +37,22 @@ namespace AirtableApiClient
         }
         public readonly string UserId;
         public readonly ICollection<string> Scopes;
+    }
+
+
+    public class AirtableGetBaseSchemaResponse : AirtableApiResponse
+    {
+        public AirtableGetBaseSchemaResponse(AirtableApiException error) : base(error)
+        {
+            Tables = null;
+        }
+
+        public AirtableGetBaseSchemaResponse(TableModelList tables) : base()
+        {
+            Tables = tables.Tables;
+        }
+
+        public readonly IEnumerable<TableModel> Tables;
     }
 
 
